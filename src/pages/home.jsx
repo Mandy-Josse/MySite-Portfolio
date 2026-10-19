@@ -8,7 +8,7 @@ import ReverieIntro from "../components/reverieIntro";
 
 
 
-export default function App() {
+export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
       <Header />

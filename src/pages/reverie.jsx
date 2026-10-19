@@ -1,5 +1,5 @@
 
-export default function App() {
+export default function Reverie() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
         WIP
