@@ -15,7 +15,7 @@ export default function Projects() {
           {/* Project visual */}
           <Link
             to="/projects/reverie"
-            className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-900"
+            className="group relative block overflow-hidden rounded-2xl bg-neutral-900"
           >
             <img
               src="/images/reverie-cover.webp"
