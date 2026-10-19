@@ -4,6 +4,7 @@ import Projects from "../components/projects";
 import About from "../components/about";
 import Contact from "../components/contact";
 import Footer from "../components/footer";
+import ReverieIntro from "../components/reverieIntro";
 
 
 
@@ -13,6 +14,7 @@ export default function App() {
       <Header />
       <Hero />
       <Projects />
+      <ReverieIntro />
       <About />
       <Contact />
       <Footer />
