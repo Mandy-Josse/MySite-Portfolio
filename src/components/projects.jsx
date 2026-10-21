@@ -1,43 +1,85 @@
 import ProjectCard from "./ProjectCard";
+import { useLanguage } from "../context/LanguageContext";
 
 const projects = [
   {
-    title: "Reverie",
-    category: "Game Design · Roblox",
-    image: null,
+    id: "reverie",
     slug: "reverie",
-  },
-  {
-    title: "Project Two",
-    category: "Graphic Design · Branding",
     image: null,
+
+    en: {
+      title: "Reverie",
+      category: "Game Design · Roblox",
+    },
+
+    fr: {
+      title: "Reverie",
+      category: "Game Design · Roblox",
+    },
+  },
+
+  {
+    id: "project-two",
     slug: "project-two",
-  },
-  {
-    title: "Project Three",
-    category: "Illustration · Art Direction",
     image: null,
+
+    en: {
+      title: "Project Two",
+      category: "Graphic Design · Branding",
+    },
+
+    fr: {
+      title: "Projet Deux",
+      category: "Design graphique · Branding",
+    },
+  },
+
+  {
+    id: "project-three",
     slug: "project-three",
-  },
-  {
-    title: "Project Four",
-    category: "3D · Digital Creation",
     image: null,
+
+    en: {
+      title: "Project Three",
+      category: "Illustration · Art Direction",
+    },
+
+    fr: {
+      title: "Projet Trois",
+      category: "Illustration · Direction artistique",
+    },
+  },
+
+  {
+    id: "project-four",
     slug: "project-four",
+    image: null,
+
+    en: {
+      title: "Project Four",
+      category: "3D · Digital Creation",
+    },
+
+    fr: {
+      title: "Projet Quatre",
+      category: "3D · Création numérique",
+    },
   },
 ];
 
 export default function Projects() {
+  const { language, t } = useLanguage();
+
   return (
     <section id="work" className="px-8 py-24 md:px-12">
       <div className="mb-12 flex items-end justify-between">
         <div>
           <p className="mb-3 text-sm uppercase tracking-widest text-neutral-500">
-            Selected work
+            {t.projects.eyebrow}
           </p>
 
           <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-            Projects.
+            {t.projects.title}.
           </h2>
         </div>
 
@@ -47,9 +89,19 @@ export default function Projects() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} {...project} />
-        ))}
+        {projects.map((project) => {
+          const content = project[language];
+
+          return (
+            <ProjectCard
+              key={project.id}
+              title={content.title}
+              category={content.category}
+              image={project.image}
+              slug={project.slug}
+            />
+          );
+        })}
       </div>
     </section>
   );

@@ -1,7 +1,11 @@
-export default function Header() {
+import { useLanguage } from "../context/LanguageContext";
+
+export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="flex flex-col justify-between gap-4 border-t border-neutral-900 px-8 py-8 text-sm text-neutral-600 md:flex-row md:px-12">
-      <p>© 2026 Mandy Josse</p>
+      <p>{t.footer.copyright}</p>
 
       <div className="flex gap-6">
         <a
@@ -10,7 +14,7 @@ export default function Header() {
           rel="noopener noreferrer"
           className="transition hover:text-white"
         >
-          LinkedIn
+          {t.footer.linkedin}
         </a>
 
         <a
@@ -19,7 +23,7 @@ export default function Header() {
           rel="noopener noreferrer"
           className="transition hover:text-white"
         >
-          GitHub
+          {t.footer.github}
         </a>
       </div>
     </footer>

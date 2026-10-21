@@ -7,6 +7,7 @@ import {
   useAnimations,
   useGLTF,
 } from "@react-three/drei";
+import { useLanguage } from "../context/LanguageContext";
 
 function Sculpture({
   model,
@@ -81,6 +82,7 @@ function Sculpture({
 }
 
 export default function CharacterViewer({ character }) {
+  const { t } = useLanguage();
   const [animations, setAnimations] = useState([]);
   const [selectedAnimation, setSelectedAnimation] = useState("");
   const [animationPlaying, setAnimationPlaying] = useState(true);
@@ -162,13 +164,13 @@ export default function CharacterViewer({ character }) {
           ) : (
             <div className="flex h-full w-full items-center justify-center">
               <span className="text-xs uppercase tracking-widest text-white/30">
-                3D model
+                {t.gallery.loading}
               </span>
             </div>
           )}
 
           <span className="pointer-events-none absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.2em] text-white/40">
-            Drag to explore
+            {t.gallery.explore}
           </span>
 
           <span className="pointer-events-none absolute right-4 top-4 text-[10px] tracking-widest text-white/30">
@@ -177,19 +179,19 @@ export default function CharacterViewer({ character }) {
         </div>
 
         <section className="flex flex-col gap-5">
-          <h3 className="text-xl font-bold text-white/80">
-            {character.name}
-          </h3>
+          <h3 className="text-xl font-bold text-white/80">{character.name}</h3>
           {/* CONTROL PANEL */}
           <div className="w-52 h-fit rounded-xl border border-white/10 bg-neutral-900/80 p-5 backdrop-blur-sm">
             <p className="mb-5 text-[10px] uppercase tracking-[0.2em] text-white/40">
-              Controls
+              {t.gallery.controls}
             </p>
 
             {/* SPIN CONTROL */}
             <div className="mb-5">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-white/70">Rotation</span>
+                <span className="text-xs text-white/70">
+                  {t.gallery.rotation}
+                </span>
 
                 <button
                   onClick={() => setSpinning((value) => !value)}
@@ -217,7 +219,9 @@ export default function CharacterViewer({ character }) {
                       onClick={() => setAnimationPlaying((value) => !value)}
                       className="text-[10px] uppercase tracking-widest text-white/40 transition-colors hover:text-white"
                     >
-                      {animationPlaying ? "Stop" : "Play"}
+                      {animationPlaying
+                        ? t.gallery.stopAnimation
+                        : t.gallery.playAnimation}
                     </button>
                   </div>
 
@@ -251,7 +255,7 @@ export default function CharacterViewer({ character }) {
             {/* NO ANIMATIONS */}
             {animations.length === 0 && (
               <p className="text-[10px] leading-relaxed text-white/30">
-                No animations available for this model.
+                {t.gallery.noAnimations}
               </p>
             )}
           </div>

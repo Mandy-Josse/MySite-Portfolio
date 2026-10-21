@@ -1,5 +1,8 @@
+import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="about"
@@ -8,49 +11,53 @@ export default function About() {
       <div className="grid gap-16 md:grid-cols-2">
         <div>
           <p className="mb-4 text-sm uppercase tracking-widest text-neutral-500">
-            About
+            {t.about.eyebrow}
           </p>
 
           <h2 className="text-4xl font-bold leading-tight md:text-6xl">
-            Designer,
+            {t.about.title}
             <br />
-            creator,
+            {t.about.titleLine2}
             <br />
-            <span className="text-neutral-600">problem solver.</span>
+            <span className="text-neutral-600">
+              {t.about.titleLine3}
+            </span>
           </h2>
         </div>
 
         <div className="max-w-xl text-lg leading-relaxed text-neutral-400">
-          <p>
-            I'm a third-year Multimedia and Internet student interested in
-            creating visual identities, interfaces and websites.
-          </p>
+          <p>{t.about.description1}</p>
 
           <p className="mt-6">
-            I enjoy working where graphic design and technology meet, turning
-            ideas into visual and interactive experiences.
+            {t.about.description2}
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-6 text-sm">
             <div>
-              <p className="mb-2 text-neutral-600">Design</p>
+              <p className="mb-2 text-neutral-600">
+                {t.about.design}
+              </p>
+
               <p className="text-white">
-                Illustrator
+                {t.about.illustrator}
                 <br />
-                Photoshop
+                {t.about.photoshop}
                 <br />
-                Figma
+                {t.about.figma}
               </p>
             </div>
 
             <div>
-              <p className="mb-2 text-neutral-600">Web</p>
+              <p className="mb-2 text-neutral-600">
+                {t.about.web}
+              </p>
+
               <p className="text-white">
-                HTML / CSS
+                {t.about.htmlCss}
                 <br />
-                JavaScript
+                {t.about.javascript}
                 <br />
-                WordPress
+                {t.about.wordpress}
               </p>
             </div>
           </div>
