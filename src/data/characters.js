@@ -7,16 +7,17 @@ export const characters = [
     number: "011",
     model: `${base}models/ReverieCharacters/Dia.glb`,
   },
-//   {
-//     id: "character-002",
-//     name: "Character 002",
-//     number: "012",
-//     model: `${base}models/ReverieCharacters/Character002.glb`,
-//   },
-//   {
-//     id: "character-003",
-//     name: "Character 003",
-//     number: "013",
-//     model: `${base}models/ReverieCharacters/Character003.glb`,
-//   },
+  {
+    id: "SeaDrag",
+    name: "Sea Dragon",
+    number: "153",
+    model: `${base}models/ReverieCharacters/SeaDragon.glb`,
+  },
+  {
+    id: "SSting",
+    name: "Sky Stinger",
+    number: "37",
+    model: `${base}models/ReverieCharacters/SSting.glb`,
+  },
+
 ];
