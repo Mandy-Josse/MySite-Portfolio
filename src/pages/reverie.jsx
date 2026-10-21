@@ -6,7 +6,7 @@ export default function Reverie() {
       <nav className="flex items-center justify-between p-8">
         <span className="tracking-[0.3em]">REVERIE</span>
         <span className="text-sm text-neutral-400">
-          Digital collection / 001
+          A Roblox project        
         </span>
       </nav>
 

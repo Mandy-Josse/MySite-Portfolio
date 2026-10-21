@@ -33,7 +33,7 @@ function Sculpture({ model }) {
 export default function CharacterViewer({ character }) {
   return (
     <article className="group min-w-0">
-      <div className="relative overflow-hidden rounded-xl border border-white/10 bg-neutral-950">
+      <div className="h-150 w-150 relative overflow-hidden rounded-xl border border-white/10 bg-neutral-500">
         <Canvas
           camera={{ position: [0, 0, 5], fov: 45 }}
           gl={{ antialias: true }}
