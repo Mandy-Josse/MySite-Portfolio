@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <nav className="flex items-center justify-between px-8 py-6 md:px-12">
+    <nav className="sticky top-0 z-50 flex items-center justify-between bg-neutral-950 px-8 py-6 md:px-12">
       <a href="/" className="text-xl font-bold tracking-tight">
         Mandy.
       </a>

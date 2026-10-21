@@ -1,26 +1,29 @@
-
 import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "Project One",
-    category: "Webdesign · UI/UX",
+    title: "Reverie",
+    category: "Game Design · Roblox",
     image: null,
+    slug: "reverie",
   },
   {
     title: "Project Two",
     category: "Graphic Design · Branding",
     image: null,
+    slug: "project-two",
   },
   {
     title: "Project Three",
     category: "Illustration · Art Direction",
     image: null,
+    slug: "project-three",
   },
   {
     title: "Project Four",
     category: "3D · Digital Creation",
     image: null,
+    slug: "project-four",
   },
 ];
 
@@ -45,7 +48,7 @@ export default function Projects() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+          <ProjectCard key={project.slug} {...project} />
         ))}
       </div>
     </section>

@@ -1,7 +1,7 @@
 const base = import.meta.env.BASE_URL;
 
 export const characters = [
-    {
+  {
     id: "angie",
     name: "Angie",
     number: "008",
@@ -25,5 +25,4 @@ export const characters = [
     number: "37",
     model: `${base}models/ReverieCharacters/SSting.glb`,
   },
-
 ];
