@@ -4,7 +4,7 @@ import Reverie from "./pages/reverie.jsx";
 
 import ProjectTwo from "./pages/project-two.jsx";
 import ProjectThree from "./pages/project-three.jsx";
-import ProjectCartes from "./pages/projectCartes.jsx";
+import ProjectCartes from "./pages/projectcartes.jsx";
 
 
 
