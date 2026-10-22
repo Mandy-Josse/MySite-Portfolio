@@ -3,10 +3,9 @@ import { useLanguage } from "../context/LanguageContext";
 export default function About() {
   const { t, language } = useLanguage();
 
-  const cvPath =
-    language === "fr"
-      ? "/cv/cv-mandy-josse-fr.pdf"
-      : "/cv/cv-mandy-josse-en.pdf";
+  const cvPath = `${import.meta.env.BASE_URL}cv/${
+    language === "fr" ? "cv-mandy-josse-fr.pdf" : "cv-mandy-josse-en.pdf"
+  }`;
 
   return (
     <section
