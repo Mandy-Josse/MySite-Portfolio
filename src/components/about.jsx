@@ -1,11 +1,12 @@
-
 import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
   const { t, language } = useLanguage();
 
   const cvPath =
-    language === "fr" ? "/CV/cv-mandy-josse-fr.pdf" : "/CV/cv-mandy-josse-en.pdf";
+    language === "fr"
+      ? "/cv/cv-mandy-josse-fr.pdf"
+      : "/cv/cv-mandy-josse-en.pdf";
 
   return (
     <section
@@ -25,15 +26,17 @@ export default function About() {
               <br />
               {t.about.titleLine2}
               <br />
-              <span className="text-neutral-600">
-                {t.about.titleLine3}
-              </span>
+              <span className="text-neutral-600">{t.about.titleLine3}</span>
             </h2>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={cvPath}
-                download
+                download={
+                  language === "fr"
+                    ? "CV-Mandy-Josse-FR.pdf"
+                    : "CV-Mandy-Josse-EN.pdf"
+                }
                 className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-neutral-300"
               >
                 {t.about.downloadCv}
@@ -45,7 +48,9 @@ export default function About() {
                 className="inline-flex items-center rounded-full border border-neutral-700 px-6 py-3 text-sm transition hover:border-white hover:text-white"
               >
                 {t.nav.contact}
-                <span className="ml-2" aria-hidden="true">↗</span>
+                <span className="ml-2" aria-hidden="true">
+                  ↗
+                </span>
               </a>
             </div>
           </div>
