@@ -4,7 +4,7 @@ import Reverie from "./pages/reverie.jsx";
 
 import ProjectTwo from "./pages/project-two.jsx";
 import ProjectThree from "./pages/project-three.jsx";
-import ProjectFour from "./pages/project-four.jsx";
+import ProjectCartes from "./pages/projectCartes.jsx";
 
 
 
@@ -27,7 +27,7 @@ export default function App() {
 
         <Route
           path="/projects/project-four"
-          element={<ProjectFour />}
+          element={<ProjectCartes />}
         />
 
 

@@ -20,7 +20,7 @@ export default function Projects() {
             className="group relative block overflow-hidden rounded-2xl bg-neutral-900"
           >
             <img
-              src="/images/reverie-cover.webp"
+              src="/assets/reverie-cover.webp"
               alt={t.featuredProject.alt}
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />

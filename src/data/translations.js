@@ -66,6 +66,7 @@ export const translations = {
       title: "Designer,",
       titleLine2: "creator,",
       titleLine3: "problem solver.",
+      downloadCv: "Download my CV",
 
       description1:
         "I'm a third-year Multimedia and Internet student interested in creating visual identities, interfaces and websites.",
@@ -166,6 +167,7 @@ export const translations = {
       title: "Designer,",
       titleLine2: "créatrice,",
       titleLine3: "problem solver.",
+      downloadCv: "Télécharger mon CV",
 
       description1:
         "Je suis étudiante en troisième année de Métiers du Multimédia et de l'Internet, intéressée par la création d'identités visuelles, d'interfaces et de sites web.",

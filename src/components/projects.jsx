@@ -51,17 +51,17 @@ const projects = [
   },
 
   {
-    id: "project-four",
-    slug: "project-four",
+    id: "project-cartes",
+    slug: "project-cartes",
     image: null,
 
     en: {
-      title: "Project Four",
+      title: "Tarot Cards Project",
       category: "3D · Digital Creation",
     },
 
     fr: {
-      title: "Projet Quatre",
+      title: "Projet Cartes Tarot",
       category: "3D · Création numérique",
     },
   },

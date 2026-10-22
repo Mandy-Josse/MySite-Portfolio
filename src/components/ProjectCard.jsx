@@ -13,7 +13,7 @@ export default function ProjectCard({
       className="group block cursor-pointer"
     >
       <article>
-        <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-800">
+        <div className="overflow-hidden rounded-2xl bg-neutral-800">
           {image ? (
             <img
               src={image}
