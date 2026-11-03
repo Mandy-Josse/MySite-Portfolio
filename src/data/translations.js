@@ -28,7 +28,7 @@ export const translations = {
     },
 
     featuredProject: {
-      eyebrow: "Featured Project · 01",
+      eyebrow: "Featured Project",
       category: "Roblox · Lua · Blender",
       title: "Introducing",
       titleAccent: "Reverie.",
@@ -129,7 +129,7 @@ export const translations = {
     },
 
     featuredProject: {
-      eyebrow: "Projet à la une · 01",
+      eyebrow: "Projet à la une",
       category: "Roblox · Lua · Blender",
       title: "Découvrez",
       titleAccent: "Reverie.",

@@ -2,8 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/home.jsx";
 import Reverie from "./pages/reverie.jsx";
 
-import ProjectTwo from "./pages/project-two.jsx";
-import ProjectThree from "./pages/project-three.jsx";
+import SilkSongShop from "./pages/SilkSongShop.jsx";
 import ProjectCartes from "./pages/projectcartes.jsx";
 
 
@@ -12,17 +11,15 @@ export default function App() {
   return (
     <BrowserRouter basename="/MySite-Portfolio">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects/reverie" element={<Reverie />} />
-        
-        <Route
-          path="/projects/project-two"
-          element={<ProjectTwo />}
-        />
+        <Route path="/"
+        element={<Home />} />
+
+        <Route path="/projects/reverie"
+        element={<Reverie />} />
 
         <Route
-          path="/projects/project-three"
-          element={<ProjectThree />}
+          path="/projects/SilkSongShop"
+          element={<SilkSongShop />}
         />
 
         <Route
