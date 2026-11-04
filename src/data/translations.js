@@ -86,13 +86,6 @@ export const translations = {
       wordpress: "WordPress",
     },
 
-    contact: {
-      eyebrow: "Contact",
-      title: "Have a project",
-      titleAccent: "in mind?",
-      email: "Mandyjosse@gmail.com",
-    },
-
     footer: {
       copyright: "© 2026 Mandy Josse",
       linkedin: "LinkedIn",
@@ -185,13 +178,6 @@ export const translations = {
       htmlCss: "HTML / CSS",
       javascript: "JavaScript",
       wordpress: "WordPress",
-    },
-
-    contact: {
-      eyebrow: "Contact",
-      title: "Vous avez un projet",
-      titleAccent: "en tête ?",
-      email: "Mandyjosse@gmail.com",
     },
 
     footer: {

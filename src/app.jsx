@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import Home from "./pages/home.jsx";
-import Reverie from "./pages/reverie.jsx";
 
+import Home from "./pages/home.jsx";
+
+import Reverie from "./pages/reverie.jsx";
 import SilkSongShop from "./pages/SilkSongShop.jsx";
-import ProjectCartes from "./pages/projectcartes.jsx";
+import ProjectCartes from "./pages/cartestarot.jsx";
+import WaitRose from "./pages/Waitrose.jsx";
 
 
 
@@ -18,15 +20,19 @@ export default function App() {
         element={<Reverie />} />
 
         <Route
-          path="/projects/SilkSongShop"
+          path="/projects/silksongshop"
           element={<SilkSongShop />}
         />
 
         <Route
-          path="/projects/project-four"
+          path="/projects/cartestarot"
           element={<ProjectCartes />}
         />
 
+        <Route
+          path="/projects/waitrose"
+          element={<WaitRose />}
+        />
 
 
       </Routes>

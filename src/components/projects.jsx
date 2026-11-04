@@ -3,35 +3,45 @@ import ProjectCard from "./ProjectCard";
 import { useLanguage } from "../context/LanguageContext";
 
 const projects = [
+  
+   {
+    id: "reverie",
+    slug: "/projects/reverie",
+    image: `${import.meta.env.BASE_URL}images/reverie-cover.png`,
+    en: { title: "Reverie", category: "Roblox · LUA · 3D" },
+    fr: { title: "Reverie", category: "Roblox · LUA · 3D" },
+  },
+
   {
     id: "card",
-    slug: "card",
+    slug: "/projects/cartestarot",
     image: `${import.meta.env.BASE_URL}images/projects/cardcover.png`,
     en: { title: "Tarot Cards", category: "Illustration · Illustrator" },
     fr: { title: "Cartes de Tarot", category: "Illustration · Illustrator" },
   },
-  {
-    id: "project-two",
-    slug: "project-two",
-    image: null,
-    en: { title: "Project Two", category: "Graphic Design · Branding" },
-    fr: { title: "Projet Deux", category: "Design graphique · Branding" },
-  },
 
   {
     id: "silksongshop",
-    slug: "silksongshop",
+    slug: "/projects/silksongshop",
     image: null,
-    en: { title: "Silksong Shop", category: "Wordpress · 3D" },
-    fr: { title: "Shop Silksong", category: "Wordpress · 3D" },
+    en: { title: "Silksong Shop", category: "WordPress · 3D" },
+    fr: { title: "Shop Silksong", category: "WordPress · 3D" },
   },
 
   {
-    id: "project-cartes",
-    slug: "project-cartes",
+    id: "waitrose",
+    slug: "/projects/waitrose",
     image: null,
-    en: { title: "Tarot Cards Project", category: "3D · Digital Creation" },
-    fr: { title: "Projet Cartes Tarot", category: "3D · Création numérique" },
+    en: { title: "Waitrose", category: "Audiovisual" },
+    fr: { title: "Waitrose", category: "Audiovisuel" },
+  },
+
+  {
+    id: "fournils",
+    slug: null,
+    image: null,
+    en: { title: "France Fournils", category: "Web" },
+    fr: { title: "Les Fournils de France", category: "Web" },
   },
 
   ...Array.from({ length: 4 }, (_, i) => ({

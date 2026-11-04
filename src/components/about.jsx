@@ -16,7 +16,7 @@ export default function About() {
         <div className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:gap-20">
           {/* Introduction */}
           <div className="flex flex-col items-start">
-            <p className="mb-6 text-xs uppercase tracking-[0.3em] text-neutral-500">
+            <p className="mb-6 text-xs uppercase tracking-[0.3em]">
               {t.about.eyebrow}
             </p>
 
@@ -25,52 +25,36 @@ export default function About() {
               <br />
               {t.about.titleLine2}
               <br />
-              <span className="text-neutral-600">{t.about.titleLine3}</span>
+              <span className="text-teal-600">{t.about.titleLine3}</span>
             </h2>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={cvPath}
-                download={
-                  language === "fr"
-                    ? "CV-Mandy-Josse-FR.pdf"
-                    : "CV-Mandy-Josse-EN.pdf"
-                }
-                className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-neutral-300"
-              >
-                {t.about.downloadCv}
-                <span aria-hidden="true">↓</span>
-              </a>
-
               <a
                 href="#contact"
                 className="inline-flex items-center rounded-full border border-neutral-700 px-6 py-3 text-sm transition hover:border-white hover:text-white"
               >
                 {t.nav.contact}
-                <span className="ml-2" aria-hidden="true">
-                  ↗
-                </span>
               </a>
             </div>
           </div>
 
           {/* Description and skills */}
           <div className="flex flex-col justify-center">
-            <p className="text-lg leading-relaxed text-neutral-300 md:text-xl">
+            <p className="text-lg leading-relaxed md:text-xl">
               {t.about.description1}
             </p>
 
-            <p className="mt-5 text-base leading-relaxed text-neutral-500">
+            <p className="mt-5 text-base leading-relaxed">
               {t.about.description2}
             </p>
 
-            <div className="mt-12 grid grid-cols-2 gap-8 border-t border-neutral-800 pt-8">
+            <div className="mt-12 grid grid-cols-2 gap-8 border-t border-neutral-800 pt-8 text-[#174C49]">
               <div>
-                <p className="mb-5 text-xs uppercase tracking-[0.2em] text-neutral-500">
+                <p className="mb-5 text-xs uppercase tracking-[0.2em]">
                   {t.about.design}
                 </p>
 
-                <ul className="space-y-3 text-sm text-neutral-200">
+                <ul className="space-y-3 text-sm">
                   <li>{t.about.illustrator}</li>
                   <li>{t.about.photoshop}</li>
                   <li>{t.about.figma}</li>
@@ -78,11 +62,11 @@ export default function About() {
               </div>
 
               <div>
-                <p className="mb-5 text-xs uppercase tracking-[0.2em] text-neutral-500">
+                <p className="mb-5 text-xs uppercase tracking-[0.2em]">
                   {t.about.web}
                 </p>
 
-                <ul className="space-y-3 text-sm text-neutral-200">
+                <ul className="space-y-3 text-sm">
                   <li>{t.about.htmlCss}</li>
                   <li>{t.about.javascript}</li>
                   <li>{t.about.wordpress}</li>

@@ -1,27 +1,36 @@
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+
+  const content = {
+    fr: {
+      title: "Vous avez un projet",
+      titleAccent: "en tête ?",
+      email: "Mandyjosse@gmail.com",
+    },
+    en: {
+      title: "Have a project",
+      titleAccent: "in mind?",
+      email: "Mandyjosse@gmail.com",
+    },
+  };
+  const t = content[language] || content.fr;
 
   return (
     <section id="contact" className="px-8 py-32 md:px-12">
-      <p className="mb-4 text-sm uppercase tracking-widest text-neutral-500">
-        {t.contact.eyebrow}
-      </p>
-
-      <h2 className="max-w-4xl text-5xl font-bold leading-tight tracking-tight md:text-7xl">
-        {t.contact.title}
-        <span className="text-neutral-600">
-          {" "}
-          {t.contact.titleAccent}
+      <h2 className="max-w-5xl text-5xl font-bold leading-tight tracking-tight md:text-7xl">
+        {t.title}
+        <span className="text-teal-600">
+          {" "}{t.titleAccent}
         </span>
       </h2>
 
       <a
         href="mailto:Mandyjosse@gmail.com"
-        className="mt-10 inline-block text-xl underline decoration-neutral-700 underline-offset-8 transition hover:decoration-white"
+        className="mt-10 inline-block text-xl font-bold text-teal-500 underline decoration-teal-300 underline-offset-8 transition hover:decoration-white"
       >
-        {t.contact.email}
+        {t.email}
       </a>
     </section>
   );

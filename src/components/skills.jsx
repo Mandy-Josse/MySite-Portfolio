@@ -95,16 +95,12 @@ export default function Skills() {
               className="group rounded-2xl border border-[#D7EBE8] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg hover:shadow-teal-900/5"
             >
               <div className="mb-8 flex items-center justify-between">
-                <span className="text-sm font-medium text-teal-700">
-                  {group.number}
-                </span>
-
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EAF8F6] text-2xl text-teal-700 transition group-hover:bg-[#36CFC3] group-hover:text-[#174C49]">
                   {group.symbol}
                 </span>
               </div>
 
-              <h3 className="mb-5 text-xl font-semibold text-[#174C49]">
+              <h3 className="mb-5 text-xl font-semibold text-teal-800">
                 {group.title[language] || group.title.en}
               </h3>
 

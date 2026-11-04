@@ -3,7 +3,7 @@ import Footer from "../components/footer";
 
 export default function ProjectCartes() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="min-h-screen bg-[#EAF8F6] text-[#174C49]">
       <Header />
         WIP
       <Footer />

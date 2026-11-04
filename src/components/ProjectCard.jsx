@@ -55,18 +55,14 @@ export default function ProjectCard({
         `}
       >
         <div className="min-w-0">
-          <h3 className="truncate text-lg font-bold text-[#174C49]">
-            {title}
-          </h3>
+          <h3 className="truncate text-lg font-bold text-[#174C49]">{title}</h3>
 
-          <p className="mt-1 text-xs text-[#668681]">
-            {category}
-          </p>
+          <p className="mt-1 text-xs text-[#668681]">{category}</p>
         </div>
 
         {slug && (
           <Link
-            to={`/projects/${slug}`}
+            to={slug}
             draggable="false"
             onPointerDown={(e) => e.stopPropagation()}
             onClick={(e) => e.stopPropagation()}

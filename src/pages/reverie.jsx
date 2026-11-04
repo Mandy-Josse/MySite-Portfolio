@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 
 export default function Reverie() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
+    <main className="min-h-screen bg-[#EAF8F6] text-[#174C49]">
       <Header />
 
       <nav className="flex items-center justify-between p-8">
@@ -20,8 +20,7 @@ export default function Reverie() {
         </h1>
 
         <p className="mt-5 max-w-md text-sm leading-7 text-neutral-400">
-          A collection of forms, characters, and digital sculptures. Each object
-          invites a closer look.
+          Over 15 complex 3D models
         </p>
 
         <p className="mt-5 max-w-md text-sm leading-7 text-neutral-400">
