@@ -338,16 +338,16 @@ export default function Projects() {
       ) : (
         <div
           ref={containerRef}
-          className="relative flex w-full flex-col items-center overflow-visible"
+          className="relative flex w-full flex-col items-center"
         >
           {/* Carousel */}
           <div
-            className="relative flex w-full items-center justify-center overflow-visible select-none cursor-grab active:cursor-grabbing rounded-3xl border border-teal-800/40 bg-teal-950"
-            style={{
+className="relative flex w-full items-center justify-center overflow-hidden isolate select-none cursor-grab active:cursor-grabbing rounded-3xl border border-teal-800/40 bg-teal-950"            style={{
               height: `${carouselHeight}px`,
               minHeight: `${carouselHeight}px`,
               perspective: `${perspective}px`,
               touchAction: "pan-y",
+              isolation: "isolate",
             }}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
