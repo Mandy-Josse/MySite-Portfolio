@@ -10,7 +10,7 @@ export default function ProjectCard({
   return (
     <article
       className={`
-        relative flex flex-col w-full h-full
+        relative flex h-full w-full flex-col
         rounded-2xl overflow-hidden
         border border-[#D7EBE8]
         bg-white
@@ -44,14 +44,14 @@ export default function ProjectCard({
         )}
       </div>
 
-      {/* Information directly below image */}
+      {/* Information */}
       <div
         className={`
           flex items-start justify-between gap-3
           px-5 pt-3
           bg-white
           transition-all duration-500
-          ${active ? "flex-1 opacity-100 translate-y-0" : "hidden"}
+          ${active ? "min-h-0 flex-1 opacity-100 translate-y-0" : "hidden"}
         `}
       >
         <div className="min-w-0">

@@ -135,10 +135,6 @@ export default function WaitRose() {
       {/* Concept */}
       <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-28 md:grid-cols-2">
         <div>
-          <p className="mb-5 text-xs uppercase tracking-[0.3em] text-neutral-400">
-            01 — {t.conceptLabel}
-          </p>
-
           <h2 className="max-w-md text-4xl font-semibold leading-tight md:text-6xl">
             {t.conceptTitle}
           </h2>
@@ -155,10 +151,6 @@ export default function WaitRose() {
       <section className="bg-[#D5EEEA] px-6 py-24">
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2">
           <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.3em] text-neutral-500">
-              02 — {t.processLabel}
-            </p>
-
             <h2 className="max-w-md text-4xl font-semibold leading-tight md:text-6xl">
               {t.processTitle}
             </h2>
