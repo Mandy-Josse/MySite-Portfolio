@@ -1,11 +1,40 @@
+
 import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
+  const isFr = language === "fr";
 
-  const cvPath = `${import.meta.env.BASE_URL}cv/${
-    language === "fr" ? "cv-mandy-josse-fr.pdf" : "cv-mandy-josse-en.pdf"
-  }`;
+  const content = {
+    en: {
+      eyebrow: "About",
+      title: "Designer,",
+      titleLine2: "creator,",
+      titleLine3: "problem solver.",
+
+      description1:
+        "I'm a third-year Multimedia and Internet student interested in creating visual identities, interfaces and websites.",
+
+      description2:
+        "I enjoy working where graphic design and technology meet, turning ideas into visual and interactive experiences.",
+
+    },
+
+    fr: {
+      eyebrow: "À propos",
+      title: "Designer,",
+      titleLine2: "créatrice,",
+      titleLine3: "problem solver.",
+
+      description1:
+        "Je suis étudiante en troisième année de Métiers du Multimédia et de l'Internet, intéressée par la création d'identités visuelles, d'interfaces et de sites web.",
+
+      description2:
+        "J'aime travailler à la rencontre du design graphique et de la technologie, en transformant des idées en expériences visuelles et interactives.",
+    },
+  };
+
+  const t = content[language] || content.en;
 
   return (
     <section
@@ -17,15 +46,15 @@ export default function About() {
           {/* Introduction */}
           <div className="flex flex-col items-start">
             <p className="mb-6 text-xs uppercase tracking-[0.3em]">
-              {t.about.eyebrow}
+              {t.eyebrow}
             </p>
 
             <h2 className="text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl">
-              {t.about.title}
+              {t.title}
               <br />
-              {t.about.titleLine2}
+              {t.titleLine2}
               <br />
-              <span className="text-teal-600">{t.about.titleLine3}</span>
+              <span className="text-teal-600">{t.titleLine3}</span>
             </h2>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -33,7 +62,7 @@ export default function About() {
                 href="#contact"
                 className="inline-flex items-center rounded-full border border-neutral-700 px-6 py-3 text-sm transition hover:border-white hover:text-white"
               >
-                {t.nav.contact}
+                {language === "fr" ? "Contact" : "Contact"}
               </a>
             </div>
           </div>
@@ -41,35 +70,35 @@ export default function About() {
           {/* Description and skills */}
           <div className="flex flex-col justify-center">
             <p className="text-lg leading-relaxed md:text-xl">
-              {t.about.description1}
+              {t.description1}
             </p>
 
             <p className="mt-5 text-base leading-relaxed">
-              {t.about.description2}
+              {t.description2}
             </p>
 
             <div className="mt-12 grid grid-cols-2 gap-8 border-t border-neutral-800 pt-8 text-[#174C49]">
               <div>
                 <p className="mb-5 text-xs uppercase tracking-[0.2em]">
-                  {t.about.design}
+                  design
                 </p>
 
                 <ul className="space-y-3 text-sm">
-                  <li>{t.about.illustrator}</li>
-                  <li>{t.about.photoshop}</li>
-                  <li>{t.about.figma}</li>
+                  <li>Illustrator</li>
+                  <li>photoshop</li>
+                  <li>figma</li>
                 </ul>
               </div>
 
               <div>
                 <p className="mb-5 text-xs uppercase tracking-[0.2em]">
-                  {t.about.web}
+                  web
                 </p>
 
                 <ul className="space-y-3 text-sm">
-                  <li>{t.about.htmlCss}</li>
-                  <li>{t.about.javascript}</li>
-                  <li>{t.about.wordpress}</li>
+                  <li>htmlCss</li>
+                  <li>javascript</li>
+                  <li>wordpress</li>
                 </ul>
               </div>
             </div>

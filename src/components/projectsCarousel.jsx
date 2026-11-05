@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import { useLanguage } from "../context/LanguageContext";
@@ -25,7 +24,7 @@ const projects = [
   {
     id: "silksongshop",
     slug: "/projects/silksongshop",
-    image: null,
+    image: `${import.meta.env.BASE_URL}images/projects/silksongshop/Silksongshop-cover.png`,
     categories: ["web-design", "3d"],
     type: "university",
     en: { title: "Silksong Shop", category: "WordPress · 3D" },
@@ -42,24 +41,23 @@ const projects = [
   },
   {
     id: "fournils",
-    slug: null,
-    image: null,
+    slug: "/projects/fournils",
+    image: `${import.meta.env.BASE_URL}images/projects/fournils/`,
     categories: ["web-design"],
     type: "university",
     en: { title: "France Fournils", category: "Web" },
     fr: { title: "Les Fournils de France", category: "Web" },
   },
+  {
+    id: "latoise",
+    slug: "/projects/latoise",
+    image: `${import.meta.env.BASE_URL}images/projects/toise/`,
+    categories: ["illustration"],
+    type: "professional",
+    en: { title: "La Toise", category: "Illustration · Photoshop" },
+    fr: { title: "La Toise", category: "Illustration · Photoshop" },
+  },
 
-  ...Array.from({ length: 14 }, (_, i) => ({
-    id: `empty-${i + 1}`,
-    slug: null,
-    image: null,
-    empty: true,
-    categories: [],
-    type: "none",
-    en: { title: "Your next project", category: "Coming soon" },
-    fr: { title: "Votre prochain projet", category: "À venir" },
-  })),
 ];
 
 const categories = [
@@ -105,11 +103,9 @@ export default function Projects() {
     }
 
     const categoryMatch =
-      activeCategory === "all" ||
-      project.categories.includes(activeCategory);
+      activeCategory === "all" || project.categories.includes(activeCategory);
 
-    const typeMatch =
-      activeType === "all" || project.type === activeType;
+    const typeMatch = activeType === "all" || project.type === activeType;
 
     return categoryMatch && typeMatch;
   });
@@ -123,7 +119,7 @@ export default function Projects() {
       if (!containerRef.current) return;
 
       setCardWidth(
-        Math.min(340, Math.max(190, containerRef.current.offsetWidth * 0.52))
+        Math.min(340, Math.max(190, containerRef.current.offsetWidth * 0.52)),
       );
     };
 
@@ -150,17 +146,14 @@ export default function Projects() {
   const cardHeight = cardWidth * 1.05;
 
   // More spacing with fewer cards, tighter spacing with more cards
-  const spacingFactor = Math.max(
-    1,
-    Math.min(1.55, 1.66 - count * 0.047)
-  );
+  const spacingFactor = Math.max(1, Math.min(1.55, 1.66 - count * 0.047));
 
   // Carousel radius
   const radius =
     count <= 1
       ? 0
       : Math.round(
-          (cardWidth / (2 * Math.tan(Math.PI / count))) * spacingFactor
+          (cardWidth / (2 * Math.tan(Math.PI / count))) * spacingFactor,
         ) + 60;
 
   const perspective = Math.max(1800, radius * 2.5);
@@ -170,9 +163,7 @@ export default function Projects() {
   const verticalOrbit = radius * Math.sin(rotationRadians);
 
   // Extra room above and below the cards
-  const carouselHeight = Math.ceil(
-    cardHeight + verticalOrbit * 2 + 280
-  );
+  const carouselHeight = Math.ceil(cardHeight + verticalOrbit * 2 + 280);
 
   // Update active card
   const updateActiveIndex = (rotationValue) => {
@@ -206,18 +197,29 @@ export default function Projects() {
   const previous = () => rotateTo(activeIndex - 1);
 
   // Drag interaction
-  const handlePointerDown = (e) => {
-    if (e.button !== 0 || count === 0) return;
 
-    isDragging.current = true;
-    moved.current = false;
+const handlePointerDown = (e) => {
+  if (e.button !== 0 || count === 0) return;
 
-    startX.current = e.clientX;
-    startRotation.current = rotationRef.current;
+  isDragging.current = true;
+  moved.current = false;
 
-    setDragging(true);
+  startX.current = e.clientX;
+  startRotation.current = rotationRef.current;
+
+  setDragging(true);
+
+  // Capture the pointer on the card itself,
+  // not on the entire carousel.
+  const card = e.target.closest("article");
+
+  if (card) {
+    card.setPointerCapture(e.pointerId);
+  } else {
     e.currentTarget.setPointerCapture(e.pointerId);
-  };
+  }
+};
+
 
   const handlePointerMove = (e) => {
     if (!isDragging.current) return;
@@ -266,15 +268,9 @@ export default function Projects() {
     <section id="work" className="px-6 py-24 md:px-12">
       {/* Section heading */}
       <div className="mb-8 flex items-end justify-between">
-        <div>
-          <p className="mb-3 text-sm uppercase tracking-widest text-neutral-500">
-            {t.projects.eyebrow}
-          </p>
-
-          <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-            {t.projects.title}.
-          </h2>
-        </div>
+        <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+          {t.projects.title}
+        </h2>
 
         <span className="hidden text-sm text-neutral-600 md:block">
           2024 — 2026
@@ -307,7 +303,7 @@ export default function Projects() {
 
         <div>
           <p className="mb-3 text-xs uppercase tracking-widest text-neutral-500">
-            {language === "fr" ? "Origine du projet" : "Project origin"}
+            {language === "fr" ? "Type de projet" : "Project type"}
           </p>
 
           <div className="flex flex-wrap gap-2">
@@ -342,7 +338,8 @@ export default function Projects() {
         >
           {/* Carousel */}
           <div
-className="relative flex w-full items-center justify-center overflow-hidden isolate select-none cursor-grab active:cursor-grabbing rounded-3xl border border-teal-800/40 bg-teal-950"            style={{
+            className="relative flex w-full items-center justify-center overflow-hidden isolate select-none cursor-grab active:cursor-grabbing rounded-3xl border border-teal-800/40 bg-teal-950"
+            style={{
               height: `${carouselHeight}px`,
               minHeight: `${carouselHeight}px`,
               perspective: `${perspective}px`,
@@ -375,13 +372,9 @@ className="relative flex w-full items-center justify-center overflow-hidden isol
               {filteredProjects.map((project, index) => {
                 const content = project[language];
 
-                const relativeIndex =
-                  (index - activeIndex + count) % count;
+                const relativeIndex = (index - activeIndex + count) % count;
 
-                const distance = Math.min(
-                  relativeIndex,
-                  count - relativeIndex
-                );
+                const distance = Math.min(relativeIndex, count - relativeIndex);
 
                 const isActive = index === activeIndex;
 
@@ -395,8 +388,7 @@ className="relative flex w-full items-center justify-center overflow-hidden isol
                         translateZ(${radius}px)
                         translateY(${isActive ? "-10px" : "0px"})
                       `,
-                      opacity:
-                        distance === 0 ? 1 : distance === 1 ? 0.8 : 0.45,
+                      opacity: distance === 0 ? 1 : distance === 1 ? 0.8 : 0.45,
                       zIndex: isActive ? 50 : 10 - distance,
                       backfaceVisibility: "visible",
                       transition:

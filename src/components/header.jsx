@@ -1,4 +1,3 @@
-
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Header() {
@@ -30,24 +29,23 @@ export default function Header() {
           Mandy<span className="text-[#36CFC3]">.</span>
         </a>
 
-        {/* Navigation */}
-        <div className="hidden items-center gap-7 text-sm font-medium text-[#668681] sm:flex">
-          <a href="#work" className="transition hover:text-[#147D78]">
+      {/* Navigation */}
+        <div className="hidden items-center gap-7 text-sm font-medium text-teal-700 sm:flex">
+          <a href="/MySite-Portfolio/#projects" className="transition hover:text-teal-400">
             {t.nav.work}
           </a>
 
-          <a href="#about" className="transition hover:text-[#147D78]">
+          <a href="/MySite-Portfolio/#about" className="transition hover:text-teal-400">
             {t.nav.about}
           </a>
 
-          <a href="#contact" className="transition hover:text-[#147D78]">
+          <a href="/MySite-Portfolio/#contact" className="transition hover:text-teal-400">
             {t.nav.contact}
           </a>
         </div>
-
+        
         {/* Actions */}
         <div className="flex items-center gap-2">
-
           {/* CV Download */}
           <a
             href={cvPath}
@@ -56,14 +54,10 @@ export default function Header() {
                 ? "CV-Mandy-Josse-FR.pdf"
                 : "CV-Mandy-Josse-EN.pdf"
             }
-            className="
-              whitespace-nowrap rounded-full
-              border border-[#B9E8E1]
-              px-4 py-2.5
-              text-xs font-semibold text-[#147D78]
+            className=" whitespace-nowrap font-bold rounded-full border border-[#B9E8E1] px-4 py-2.5 text-xs text-teal-700
               transition-all duration-300
-              hover:border-[#36CFC3]
-              hover:bg-[#EAF8F6]
+              hover:border-teal-400
+              hover:bg-[#D5F3EE]
             "
           >
             CV ↓
@@ -76,9 +70,9 @@ export default function Header() {
               flex items-center gap-2
               rounded-full border border-[#B9E8E1]
               bg-[#EAF8F6] px-3 py-2.5
-              text-xs font-bold text-[#147D78]
+              text-xs font-bold text-teal-700
               transition-all duration-300
-              hover:border-[#36CFC3]
+              hover:border-teal-400
               hover:bg-[#D5F3EE]
               active:scale-95
             "
@@ -96,16 +90,15 @@ export default function Header() {
             href="#contact"
             className="
               whitespace-nowrap rounded-full
-              bg-[#36CFC3] px-5 py-2.5
-              text-xs font-semibold text-[#174C49]
+              bg-teal-400 px-5 py-2.5
+              text-xs font-bold text-[#174C49]
               transition duration-300
-              hover:bg-[#25BDB1]
+              hover:border-teal-300
               hover:scale-105
             "
           >
             {t.nav.talk}
           </a>
-
         </div>
       </nav>
     </header>

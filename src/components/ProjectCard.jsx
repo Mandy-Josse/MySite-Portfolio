@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+
+import { useNavigate } from "react-router";
 
 export default function ProjectCard({
   title,
@@ -7,6 +8,13 @@ export default function ProjectCard({
   slug,
   active = false,
 }) {
+  const navigate = useNavigate();
+
+  const navigateToProject = () => {
+    if (!slug || !active) return;
+    navigate(slug);
+  };
+
   return (
     <article
       className={`
@@ -16,7 +24,18 @@ export default function ProjectCard({
         bg-white
         transition-all duration-500
         ${active ? "shadow-xl shadow-teal-900/20" : "shadow-sm"}
+        ${active && slug ? "cursor-pointer" : ""}
       `}
+      onClick={navigateToProject}
+      onKeyDown={(e) => {
+        if (active && slug && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          navigateToProject();
+        }
+      }}
+      role={active && slug ? "link" : undefined}
+      tabIndex={active && slug ? 0 : undefined}
+      aria-label={active && slug ? `View ${title}` : undefined}
     >
       {/* Image */}
       <div
@@ -55,30 +74,14 @@ export default function ProjectCard({
         `}
       >
         <div className="min-w-0">
-          <h3 className="truncate text-lg font-bold text-[#174C49]">{title}</h3>
+          <h3 className="truncate text-lg font-bold text-[#174C49]">
+            {title}
+          </h3>
 
-          <p className="mt-1 text-xs text-[#668681]">{category}</p>
+          <p className="mt-1 text-xs text-[#668681]">
+            {category}
+          </p>
         </div>
-
-        {slug && (
-          <Link
-            to={slug}
-            draggable="false"
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={(e) => e.stopPropagation()}
-            className="
-              flex h-10 w-10 shrink-0 items-center justify-center
-              rounded-full bg-[#EAF8F6]
-              text-[#147D78]
-              transition-all duration-300
-              hover:bg-[#36CFC3]
-              hover:translate-x-1
-            "
-            aria-label={`View ${title}`}
-          >
-            ↗
-          </Link>
-        )}
       </div>
     </article>
   );

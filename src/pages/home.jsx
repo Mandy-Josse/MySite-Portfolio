@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import Hero from "../components/hero";
-import Projects from "../components/projects";
+import ProjectsCarousel from "../components/projectsCarousel.jsx";
 import Skills from "../components/skills";
 import About from "../components/about";
 import Contact from "../components/contact";
@@ -12,7 +12,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#EAF8F6] text-[#174C49]">
       <Header />
       <Hero />
-      <Projects />
+      <ProjectsCarousel />
       <ReverieIntro />
       <Skills />
       <About />
