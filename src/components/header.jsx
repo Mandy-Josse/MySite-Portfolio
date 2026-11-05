@@ -22,11 +22,8 @@ export default function Header() {
         "
       >
         {/* Logo */}
-        <a
-          href="/"
-          className="shrink-0 text-xl font-bold tracking-tight text-[#174C49]"
-        >
-          Mandy<span className="text-[#36CFC3]">.</span>
+        <a href="/MySite-Portfolio/" className="shrink-0 text-xl font-bold tracking-tight text-[#174C49]">          Mandy 
+          <span className="text-[#36CFC3]">.</span>
         </a>
 
       {/* Navigation */}
