@@ -324,7 +324,7 @@ export default function Projects() {
 
       {/* Carousel / Empty state */}
       {count === 0 ? (
-        <div className="flex h-[400px] items-center justify-center rounded-3xl overflow-hidden  border border-teal-800/40 bg-teal-950 text-sm text-neutral-400">
+        <div className="flex h-100 items-center justify-center rounded-3xl overflow-hidden  border border-teal-800/40 bg-teal-950 text-sm text-neutral-400">
           {language === "fr"
             ? "Aucun projet dans cette catégorie."
             : "No projects found in this category."}

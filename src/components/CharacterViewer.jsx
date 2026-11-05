@@ -44,7 +44,7 @@ function ModelLoadingOverlay() {
         </span>
       </div>
 
-      <div className="h-[2px] w-32 overflow-hidden rounded-full bg-teal-800/50">
+      <div className="h-0.5 w-32 overflow-hidden rounded-full bg-teal-800/50">
         <div
           className="h-full bg-teal-300 transition-all duration-300"
           style={{ width: `${progress}%` }}
