@@ -1,6 +1,14 @@
 
 import * as THREE from "three";
-import { Suspense, useEffect, useMemo, useState, useRef } from "react";
+import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
+import {
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+  useCallback,
+} from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Environment,
@@ -10,6 +18,12 @@ import {
   useProgress,
 } from "@react-three/drei";
 import { useLanguage } from "../context/LanguageContext";
+
+// CAMERA SETTINGS
+const CAMERA_HEIGHT = 0.16;
+const CAMERA_FOV = 45;
+const MODEL_PADDING = 1.35;
+const MODEL_TARGET_SIZE = 3;
 
 // LOADING OVERLAY
 function ModelLoadingOverlay() {
@@ -47,23 +61,48 @@ function Sculpture({
   animationName,
   animationPlaying,
   onAnimationsLoaded,
+  onModelReady,
 }) {
   const { scene, animations } = useGLTF(model);
-  const { actions, names } = useAnimations(animations, scene);
 
-  // Center the model automatically + fix texture artifacts
-  useMemo(() => {
-    const box = new THREE.Box3().setFromObject(scene);
+  // CLONE, NORMALIZE AND CENTER MODEL
+  const clonedScene = useMemo(() => {
+    const cloned = clone(scene);
+
+    // Calculate original dimensions
+    const box = new THREE.Box3().setFromObject(cloned);
+    const size = new THREE.Vector3();
+
+    box.getSize(size);
+
+    const maxDimension = Math.max(
+      size.x,
+      size.y,
+      size.z
+    );
+
+    // Normalize model scale
+    if (maxDimension > 0 && Number.isFinite(maxDimension)) {
+      cloned.scale.multiplyScalar(
+        MODEL_TARGET_SIZE / maxDimension
+      );
+    }
+
+    // Recalculate bounding box after scaling
+    cloned.updateMatrixWorld(true);
+
+    const centeredBox = new THREE.Box3().setFromObject(cloned);
     const center = new THREE.Vector3();
 
-    box.getCenter(center);
+    centeredBox.getCenter(center);
 
-    scene.position.x -= center.x;
-    scene.position.y -= center.y;
-    scene.position.z -= center.z;
+    // Center model in all three axes
+    cloned.position.sub(center);
+
+    cloned.updateMatrixWorld(true);
 
     // Fix texture filtering
-    scene.traverse((child) => {
+    cloned.traverse((child) => {
       if (child.isMesh && child.material) {
         const materials = Array.isArray(child.material)
           ? child.material
@@ -72,19 +111,45 @@ function Sculpture({
         materials.forEach((material) => {
           if (material.map) {
             material.map.minFilter = THREE.LinearFilter;
+            material.map.magFilter = THREE.LinearFilter;
             material.map.needsUpdate = true;
           }
         });
       }
     });
+
+    return cloned;
   }, [scene]);
 
-  // Tell CharacterViewer which animations exist
+  const { actions, names } = useAnimations(
+    animations,
+    clonedScene
+  );
+
+  // AUTOMATIC CAMERA FRAMING
+  useEffect(() => {
+    clonedScene.updateMatrixWorld(true);
+
+    const box = new THREE.Box3().setFromObject(clonedScene);
+    const size = new THREE.Vector3();
+
+    box.getSize(size);
+
+    const maxDimension = Math.max(
+      size.x,
+      size.y,
+      size.z
+    );
+
+    onModelReady(maxDimension);
+  }, [clonedScene, onModelReady]);
+
+  // REPORT AVAILABLE ANIMATIONS
   useEffect(() => {
     onAnimationsLoaded(names);
   }, [names, onAnimationsLoaded]);
 
-  // Handle animation playback and switching
+  // ANIMATION PLAYBACK
   useEffect(() => {
     Object.values(actions).forEach((action) => {
       action?.stop();
@@ -99,8 +164,6 @@ function Sculpture({
     if (animationPlaying) {
       action.reset();
       action.play();
-    } else {
-      action.stop();
     }
 
     return () => {
@@ -108,17 +171,19 @@ function Sculpture({
     };
   }, [actions, animationName, animationPlaying]);
 
-  return <primitive object={scene} />;
+  return <primitive object={clonedScene} />;
 }
 
 // CHARACTER VIEWER
-export default function ModelViewer({ character }) {
+export default function CharacterViewer({ character }) {
   const { t } = useLanguage();
 
   const [animations, setAnimations] = useState([]);
   const [selectedAnimation, setSelectedAnimation] = useState("");
   const [animationPlaying, setAnimationPlaying] = useState(true);
   const [spinning, setSpinning] = useState(true);
+
+  const [cameraDistance, setCameraDistance] = useState(6);
 
   // FULLSCREEN
   const containerRef = useRef(null);
@@ -137,26 +202,42 @@ export default function ModelViewer({ character }) {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener(
+      "fullscreenchange",
+      handleFullscreenChange
+    );
 
     return () => {
       document.removeEventListener(
         "fullscreenchange",
-        handleFullscreenChange,
+        handleFullscreenChange
       );
     };
   }, []);
 
   // ANIMATIONS
-  const handleAnimationsLoaded = (names) => {
+  const handleAnimationsLoaded = useCallback((names) => {
     setAnimations(names);
 
     if (names.length > 0) {
       setSelectedAnimation((current) =>
-        names.includes(current) ? current : names[0],
+        names.includes(current) ? current : names[0]
       );
+    } else {
+      setSelectedAnimation("");
     }
-  };
+  }, []);
+
+  // AUTOMATIC CAMERA FRAMING
+  const handleModelReady = useCallback((size) => {
+    const distance =
+      (size /
+        2 /
+        Math.tan(THREE.MathUtils.degToRad(CAMERA_FOV / 2))) *
+      MODEL_PADDING;
+
+    setCameraDistance(Math.max(4, distance));
+  }, []);
 
   // LAZY LOADING
   const viewerRef = useRef(null);
@@ -164,6 +245,7 @@ export default function ModelViewer({ character }) {
 
   useEffect(() => {
     const element = viewerRef.current;
+
     if (!element) return;
 
     const observer = new IntersectionObserver(
@@ -173,7 +255,7 @@ export default function ModelViewer({ character }) {
       {
         rootMargin: "400px 0px",
         threshold: 0,
-      },
+      }
     );
 
     observer.observe(element);
@@ -197,7 +279,16 @@ export default function ModelViewer({ character }) {
           {inRange ? (
             <>
               <Canvas
-                camera={{ position: [0, 0, 8], fov: 70 }}
+                camera={{
+                  position: [
+                    0,
+                    cameraDistance * CAMERA_HEIGHT,
+                    cameraDistance,
+                  ],
+                  fov: CAMERA_FOV,
+                  near: 0.01,
+                  far: 1000,
+                }}
                 gl={{ antialias: true }}
               >
                 <ambientLight intensity={0.25} />
@@ -219,6 +310,7 @@ export default function ModelViewer({ character }) {
                     animationName={selectedAnimation}
                     animationPlaying={animationPlaying}
                     onAnimationsLoaded={handleAnimationsLoaded}
+                    onModelReady={handleModelReady}
                   />
                 </Suspense>
 
@@ -227,14 +319,14 @@ export default function ModelViewer({ character }) {
                   dampingFactor={0.06}
                   enablePan={false}
                   enableZoom
-                  minDistance={4}
-                  maxDistance={25}
+                  minDistance={cameraDistance * 0.5}
+                  maxDistance={cameraDistance * 4}
                   autoRotate={spinning}
                   autoRotateSpeed={4}
+                  target={[0, 0, 0]}
                 />
               </Canvas>
 
-              {/* LOADING OVERLAY - OUTSIDE CANVAS */}
               <ModelLoadingOverlay />
             </>
           ) : (
@@ -351,7 +443,6 @@ export default function ModelViewer({ character }) {
                     </button>
                   </div>
 
-                  {/* ANIMATION SELECT */}
                   <select
                     value={selectedAnimation}
                     onChange={(event) => {
@@ -368,7 +459,6 @@ export default function ModelViewer({ character }) {
                   </select>
                 </div>
 
-                {/* PLAY / STOP BUTTON */}
                 <button
                   onClick={() =>
                     setAnimationPlaying((value) => !value)
