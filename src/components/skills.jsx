@@ -76,7 +76,7 @@ export default function Skills() {
           <h2 className="max-w-2xl text-5xl font-bold leading-tight tracking-tight text-[#174C49] md:text-7xl">
             {isFr ? "Mes outils," : "My creative"}
             <br />
-            <span className="text-teal-600">
+            <span className="text-teal-500">
               {isFr ? "mes compétences." : "toolkit."}
             </span>
           </h2>

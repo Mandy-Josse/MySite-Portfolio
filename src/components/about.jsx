@@ -54,7 +54,7 @@ export default function About() {
               <br />
               {t.titleLine2}
               <br />
-              <span className="text-teal-600">{t.titleLine3}</span>
+              <span className="text-teal-500">{t.titleLine3}</span>
             </h2>
 
             <div className="mt-8 flex flex-wrap gap-3">

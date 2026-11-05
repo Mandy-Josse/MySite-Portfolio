@@ -57,7 +57,6 @@ const projects = [
     en: { title: "La Toise", category: "Illustration · Photoshop" },
     fr: { title: "La Toise", category: "Illustration · Photoshop" },
   },
-
 ];
 
 const categories = [
@@ -198,28 +197,27 @@ export default function Projects() {
 
   // Drag interaction
 
-const handlePointerDown = (e) => {
-  if (e.button !== 0 || count === 0) return;
+  const handlePointerDown = (e) => {
+    if (e.button !== 0 || count === 0) return;
 
-  isDragging.current = true;
-  moved.current = false;
+    isDragging.current = true;
+    moved.current = false;
 
-  startX.current = e.clientX;
-  startRotation.current = rotationRef.current;
+    startX.current = e.clientX;
+    startRotation.current = rotationRef.current;
 
-  setDragging(true);
+    setDragging(true);
 
-  // Capture the pointer on the card itself,
-  // not on the entire carousel.
-  const card = e.target.closest("article");
+    // Capture the pointer on the card itself,
+    // not on the entire carousel.
+    const card = e.target.closest("article");
 
-  if (card) {
-    card.setPointerCapture(e.pointerId);
-  } else {
-    e.currentTarget.setPointerCapture(e.pointerId);
-  }
-};
-
+    if (card) {
+      card.setPointerCapture(e.pointerId);
+    } else {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    }
+  };
 
   const handlePointerMove = (e) => {
     if (!isDragging.current) return;
@@ -289,10 +287,10 @@ const handlePointerDown = (e) => {
               <button
                 key={id}
                 onClick={() => setActiveCategory(id)}
-                className={`rounded-full border px-4 py-2 text-xs transition ${
+                className={`rounded-full border border-teal-800 px-4 py-2 text-xs transition ${
                   activeCategory === id
-                    ? "border-teal-600 bg-teal-600 text-white"
-                    : "border-neutral-700 text-neutral-400 hover:border-teal-600 hover:bg-teal-800 hover:text-white"
+                    ? " bg-teal-500 text-white"
+                    : "text-teal-800  hover:bg-teal-800 hover:text-white"
                 }`}
               >
                 {language === "fr" ? fr : en}
@@ -311,10 +309,10 @@ const handlePointerDown = (e) => {
               <button
                 key={id}
                 onClick={() => setActiveType(id)}
-                className={`rounded-full border px-4 py-2 text-xs transition ${
+                className={`rounded-full border border-teal-800 px-4 py-2 text-xs transition ${
                   activeType === id
-                    ? "border-teal-600 bg-teal-600 text-white"
-                    : "border-neutral-700 text-neutral-400 hover:border-teal-600 hover:bg-teal-800 hover:text-white"
+                    ? " bg-teal-500 text-white"
+                    : "text-teal-800  hover:bg-teal-800 hover:text-white"
                 }`}
               >
                 {language === "fr" ? fr : en}

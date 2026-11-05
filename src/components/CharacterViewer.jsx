@@ -1,4 +1,3 @@
-
 import * as THREE from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import {
@@ -32,22 +31,22 @@ function ModelLoadingOverlay() {
   if (!active) return null;
 
   return (
-    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-neutral-950">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/10 border-t-white/70" />
+    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-teal-950/95">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-teal-800 border-t-teal-300" />
 
       <div className="flex flex-col items-center gap-2">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-white/50">
+        <span className="text-[10px] uppercase tracking-[0.25em] text-teal-200/70">
           Loading model
         </span>
 
-        <span className="text-xs tabular-nums text-white/30">
+        <span className="text-xs tabular-nums text-teal-100/40">
           {Math.round(progress)}%
         </span>
       </div>
 
-      <div className="h-[2px] w-32 overflow-hidden rounded-full bg-white/10">
+      <div className="h-[2px] w-32 overflow-hidden rounded-full bg-teal-800/50">
         <div
-          className="h-full bg-white/70 transition-all duration-300"
+          className="h-full bg-teal-300 transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -69,26 +68,17 @@ function Sculpture({
   const clonedScene = useMemo(() => {
     const cloned = clone(scene);
 
-    // Calculate original dimensions
     const box = new THREE.Box3().setFromObject(cloned);
     const size = new THREE.Vector3();
 
     box.getSize(size);
 
-    const maxDimension = Math.max(
-      size.x,
-      size.y,
-      size.z
-    );
+    const maxDimension = Math.max(size.x, size.y, size.z);
 
-    // Normalize model scale
     if (maxDimension > 0 && Number.isFinite(maxDimension)) {
-      cloned.scale.multiplyScalar(
-        MODEL_TARGET_SIZE / maxDimension
-      );
+      cloned.scale.multiplyScalar(MODEL_TARGET_SIZE / maxDimension);
     }
 
-    // Recalculate bounding box after scaling
     cloned.updateMatrixWorld(true);
 
     const centeredBox = new THREE.Box3().setFromObject(cloned);
@@ -96,12 +86,11 @@ function Sculpture({
 
     centeredBox.getCenter(center);
 
-    // Center model in all three axes
     cloned.position.sub(center);
 
     cloned.updateMatrixWorld(true);
 
-    // Fix texture filtering
+    // FIX TEXTURE FILTERING
     cloned.traverse((child) => {
       if (child.isMesh && child.material) {
         const materials = Array.isArray(child.material)
@@ -121,10 +110,7 @@ function Sculpture({
     return cloned;
   }, [scene]);
 
-  const { actions, names } = useAnimations(
-    animations,
-    clonedScene
-  );
+  const { actions, names } = useAnimations(animations, clonedScene);
 
   // AUTOMATIC CAMERA FRAMING
   useEffect(() => {
@@ -135,11 +121,7 @@ function Sculpture({
 
     box.getSize(size);
 
-    const maxDimension = Math.max(
-      size.x,
-      size.y,
-      size.z
-    );
+    const maxDimension = Math.max(size.x, size.y, size.z);
 
     onModelReady(maxDimension);
   }, [clonedScene, onModelReady]);
@@ -202,16 +184,10 @@ export default function CharacterViewer({ character }) {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
-    document.addEventListener(
-      "fullscreenchange",
-      handleFullscreenChange
-    );
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
 
     return () => {
-      document.removeEventListener(
-        "fullscreenchange",
-        handleFullscreenChange
-      );
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, []);
 
@@ -221,7 +197,7 @@ export default function CharacterViewer({ character }) {
 
     if (names.length > 0) {
       setSelectedAnimation((current) =>
-        names.includes(current) ? current : names[0]
+        names.includes(current) ? current : names[0],
       );
     } else {
       setSelectedAnimation("");
@@ -231,9 +207,7 @@ export default function CharacterViewer({ character }) {
   // AUTOMATIC CAMERA FRAMING
   const handleModelReady = useCallback((size) => {
     const distance =
-      (size /
-        2 /
-        Math.tan(THREE.MathUtils.degToRad(CAMERA_FOV / 2))) *
+      (size / 2 / Math.tan(THREE.MathUtils.degToRad(CAMERA_FOV / 2))) *
       MODEL_PADDING;
 
     setCameraDistance(Math.max(4, distance));
@@ -255,7 +229,7 @@ export default function CharacterViewer({ character }) {
       {
         rootMargin: "400px 0px",
         threshold: 0,
-      }
+      },
     );
 
     observer.observe(element);
@@ -270,7 +244,7 @@ export default function CharacterViewer({ character }) {
         {/* 3D VIEWER */}
         <div
           ref={containerRef}
-          className={`relative overflow-hidden border border-white/10 bg-neutral-500 ${
+          className={`relative overflow-hidden border border-teal-700/40 bg-teal-950 ${
             isFullscreen
               ? "h-screen w-screen rounded-none"
               : "h-150 w-150 rounded-xl"
@@ -280,11 +254,7 @@ export default function CharacterViewer({ character }) {
             <>
               <Canvas
                 camera={{
-                  position: [
-                    0,
-                    cameraDistance * CAMERA_HEIGHT,
-                    cameraDistance,
-                  ],
+                  position: [0, cameraDistance * CAMERA_HEIGHT, cameraDistance],
                   fov: CAMERA_FOV,
                   near: 0.01,
                   far: 1000,
@@ -296,13 +266,10 @@ export default function CharacterViewer({ character }) {
                 <directionalLight
                   position={[4, 5, 3]}
                   intensity={1.2}
-                  color="#fff1e6"
+                  color="#ccfff5"
                 />
 
-                <Environment
-                  preset="studio"
-                  environmentIntensity={0.5}
-                />
+                <Environment preset="studio" environmentIntensity={0.5} />
 
                 <Suspense fallback={null}>
                   <Sculpture
@@ -330,8 +297,8 @@ export default function CharacterViewer({ character }) {
               <ModelLoadingOverlay />
             </>
           ) : (
-            <div className="flex h-full w-full items-center justify-center">
-              <span className="text-xs uppercase tracking-widest text-white/30">
+            <div className="flex h-full w-full items-center justify-center bg-teal-950">
+              <span className="text-xs uppercase tracking-widest text-teal-200/40">
                 {t.gallery.loading}
               </span>
             </div>
@@ -340,7 +307,7 @@ export default function CharacterViewer({ character }) {
           {/* FULLSCREEN BUTTON */}
           <button
             onClick={toggleFullscreen}
-            className="absolute right-4 bottom-4 z-20 rounded-md border border-white/20 bg-black/50 p-2 text-white/60 backdrop-blur-sm transition-colors hover:bg-white/20 hover:text-white"
+            className="absolute right-4 bottom-4 z-20 rounded-md border border-teal-400/30 bg-teal-950/80 p-2 text-teal-200/70 backdrop-blur-sm transition-all hover:border-teal-300/60 hover:bg-teal-800 hover:text-teal-50"
             title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
           >
             {isFullscreen ? (
@@ -380,42 +347,42 @@ export default function CharacterViewer({ character }) {
             )}
           </button>
 
-          <span className="pointer-events-none absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.2em] text-white/40">
+          <span className="pointer-events-none absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.2em] text-teal-100/50">
             {t.gallery.explore}
           </span>
 
-          <span className="pointer-events-none absolute right-4 top-4 text-[10px] tracking-widest text-white/30">
+          <span className="pointer-events-none absolute right-4 top-4 text-[10px] tracking-widest text-teal-100/40">
             {character.number}
           </span>
         </div>
 
         {/* CONTROL PANEL */}
         <section className="flex flex-col gap-5">
-          <h3 className="text-xl font-bold text-white/80">
+          <h3 className="text-xl font-bold text-teal-50/90">
             {character.name}
           </h3>
 
-          <div className="w-52 h-fit rounded-xl border border-white/10 bg-neutral-900/80 p-5 backdrop-blur-sm">
-            <p className="mb-5 text-[10px] uppercase tracking-[0.2em] text-white/40">
+          <div className="h-fit w-52 rounded-xl border border-teal-700/40 bg-teal-950/90 p-5 backdrop-blur-sm">
+            <p className="mb-5 text-[10px] uppercase tracking-[0.2em] text-teal-200/50">
               {t.gallery.controls}
             </p>
 
             {/* SPIN CONTROL */}
             <div className="mb-5">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-white/70">
+                <span className="text-xs text-teal-100/80">
                   {t.gallery.rotation}
                 </span>
 
                 <button
                   onClick={() => setSpinning((value) => !value)}
-                  className={`relative h-5 w-9 rounded-full transition-colors ${
-                    spinning ? "bg-white/80" : "bg-white/15"
+                  className={`relative flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                    spinning ? "bg-teal-700" : "bg-teal-900"
                   }`}
                 >
                   <span
-                    className={`absolute top-1 h-3 w-3 rounded-full bg-neutral-900 transition-transform ${
-                      spinning ? "translate-x-5" : "translate-x-1"
+                    className={`absolute left-1 h-3 w-3 rounded-full bg-teal-100 transition-transform duration-200 ${
+                      spinning ? "translate-x-4" : "translate-x-0"
                     }`}
                   />
                 </button>
@@ -427,15 +394,13 @@ export default function CharacterViewer({ character }) {
               <>
                 <div className="mb-4">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-xs text-white/70">
+                    <span className="text-xs text-teal-100/80">
                       Animation
                     </span>
 
                     <button
-                      onClick={() =>
-                        setAnimationPlaying((value) => !value)
-                      }
-                      className="text-[10px] uppercase tracking-widest text-white/40 transition-colors hover:text-white"
+                      onClick={() => setAnimationPlaying((value) => !value)}
+                      className="text-[10px] uppercase tracking-widest text-teal-300/60 transition-colors hover:text-teal-100"
                     >
                       {animationPlaying
                         ? t.gallery.stopAnimation
@@ -449,10 +414,14 @@ export default function CharacterViewer({ character }) {
                       setSelectedAnimation(event.target.value);
                       setAnimationPlaying(true);
                     }}
-                    className="w-full rounded-md border border-white/10 bg-neutral-950 px-3 py-2 text-xs text-white/70 outline-none transition-colors focus:border-white/30"
+                    className="w-full rounded-md border border-teal-700/50 bg-teal-950 px-3 py-2 text-xs text-teal-100/80 outline-none transition-colors focus:border-teal-400"
                   >
                     {animations.map((animation) => (
-                      <option key={animation} value={animation}>
+                      <option
+                        key={animation}
+                        value={animation}
+                        className="bg-teal-950 text-teal-100"
+                      >
                         {animation}
                       </option>
                     ))}
@@ -460,21 +429,17 @@ export default function CharacterViewer({ character }) {
                 </div>
 
                 <button
-                  onClick={() =>
-                    setAnimationPlaying((value) => !value)
-                  }
-                  className="w-full rounded-md border border-white/10 px-3 py-2 text-[10px] uppercase tracking-[0.15em] text-white/60 transition-all hover:border-white/30 hover:text-white"
+                  onClick={() => setAnimationPlaying((value) => !value)}
+                  className="w-full rounded-md border border-teal-700/50 bg-teal-900/40 px-3 py-2 text-[10px] uppercase tracking-[0.15em] text-teal-100/70 transition-all hover:border-teal-400/70 hover:bg-teal-800/70 hover:text-teal-50"
                 >
-                  {animationPlaying
-                    ? "Stop Animation"
-                    : "Play Animation"}
+                  {animationPlaying ? "Stop Animation" : "Play Animation"}
                 </button>
               </>
             )}
 
             {/* NO ANIMATIONS */}
             {animations.length === 0 && (
-              <p className="text-[10px] leading-relaxed text-white/30">
+              <p className="text-[10px] leading-relaxed text-teal-200/40">
                 {t.gallery.noAnimations}
               </p>
             )}

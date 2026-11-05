@@ -21,7 +21,7 @@ export default function Contact() {
     <section id="contact" className="px-8 py-32 md:px-12">
       <h2 className="max-w-5xl text-5xl font-bold leading-tight tracking-tight md:text-7xl">
         {t.title}
-        <span className="text-teal-600">
+        <span className="text-teal-500">
           {" "}{t.titleAccent}
         </span>
       </h2>
