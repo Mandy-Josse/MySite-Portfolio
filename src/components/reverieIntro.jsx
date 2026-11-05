@@ -17,7 +17,7 @@ export default function Projects() {
           {/* Project visual */}
           <Link
             to="/projects/reverie"
-            className="group relative block overflow-hidden rounded-2xl bg-neutral-900"
+            className="group relative block overflow-hidden rounded-2xl bg-teal-900"
           >
             <img
               src={`${import.meta.env.BASE_URL}images/reverie-cover.png`}              alt={t.featuredProject.alt}
@@ -31,25 +31,25 @@ export default function Projects() {
 
           {/* Project information */}
           <div>
-            <span className="text-sm uppercase tracking-widest text-neutral-500">
+            <span className="text-sm uppercase tracking-widest text-teal-500">
               {t.featuredProject.category}
             </span>
 
             <h2 className="mt-4 text-5xl font-bold tracking-tight md:text-7xl">
               {t.featuredProject.title}
               <br />
-              <span className="text-neutral-500">
+              <span className="text-teal-500">
                 {t.featuredProject.titleAccent}
               </span>
             </h2>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-neutral-400">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-teal-500">
               {t.featuredProject.description}
             </p>
 
             <Link
               to="/projects/reverie"
-              className="mt-8 inline-flex items-center gap-3 border-b border-white pb-2 font-medium transition-all hover:gap-5"
+              className="mt-8 inline-flex items-center gap-3 border-b border-teal-500 pb-2 font-medium transition-all hover:gap-5 hover:border-teal-700 "
             >
               {t.featuredProject.explore.replace(" →", "")}
               <span aria-hidden="true">→</span>
