@@ -6,6 +6,8 @@ import SilkSongShop from "./pages/SilkSongShop.jsx";
 import ProjectCartes from "./pages/cartestarot.jsx";
 import WaitRose from "./pages/Waitrose.jsx";
 import Latoise from "./pages/Latoise.jsx";
+import FournilsDeFR from "./pages/FournilsDeFR.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
   return (
@@ -17,6 +19,11 @@ export default function App() {
         <Route path="/projects/cartestarot" element={<ProjectCartes />} />
         <Route path="/projects/waitrose" element={<WaitRose />} />
         <Route path="/projects/latoise" element={<Latoise />} />
+        <Route path="/projects/fournils" element={<FournilsDeFR />} />
+
+
+        <Route path="*" element={<NotFound />} />
+
       </Routes>
     </BrowserRouter>
   );

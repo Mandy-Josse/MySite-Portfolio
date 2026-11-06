@@ -24,10 +24,13 @@ export default function Projects() {
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
-            <span className="absolute bottom-6 right-6 rounded-full bg-white px-5 py-3 text-black transition-transform group-hover:translate-x-1">
+            <span className="absolute bottom-6 right-6 rounded-full px-5 py-3 bg-white text-teal-800 border-teal-900 border-2  text-black transition-transform transition-all duration-300 hover:border-teal-900 hover:bg-[#174C49] hover:text-white group-hover:translate-x-1">
               {t.featuredProject.viewProject}
             </span>
           </Link>
+
+
+
 
           {/* Project information */}
           <div>
@@ -55,6 +58,8 @@ export default function Projects() {
               <span aria-hidden="true">→</span>
             </Link>
           </div>
+
+          
 
         </div>
       </div>
