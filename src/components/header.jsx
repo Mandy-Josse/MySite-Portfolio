@@ -51,7 +51,7 @@ export default function Header() {
                 ? "CV-Mandy-Josse-FR.pdf"
                 : "CV-Mandy-Josse-EN.pdf"
             }
-            className=" whitespace-nowrap font-bold rounded-full border border-[#B9E8E1] px-4 py-2.5 text-xs text-teal-700
+            className=" whitespace-nowrap font-bold rounded-full bg-white border border-[#B9E8E1] px-4 py-2.5 text-xs text-teal-700
               transition-all duration-300
               hover:border-teal-400
               hover:bg-[#D5F3EE]

@@ -54,8 +54,8 @@ const projects = [
     image: `${import.meta.env.BASE_URL}images/projects/toise/`,
     categories: ["illustration"],
     type: "professional",
-    en: { title: "La Toise", category: "Illustration · Photoshop" },
-    fr: { title: "La Toise", category: "Illustration · Photoshop" },
+    en: { title: "Kaïlis - La Toise", category: "Illustration · Photoshop" },
+    fr: { title: "Kaïlis - La Toise", category: "Illustration · Photoshop" },
   },
 ];
 

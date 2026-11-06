@@ -20,7 +20,7 @@ export default function Projects() {
             className="group relative block overflow-hidden rounded-2xl bg-teal-900"
           >
             <img
-              src={`${import.meta.env.BASE_URL}images/reverie-cover.png`}              alt={t.featuredProject.alt}
+              src={`${import.meta.env.BASE_URL}images/reverie-cover.png`} alt={t.featuredProject.alt}
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
