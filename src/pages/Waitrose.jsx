@@ -2,6 +2,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import ProjectInfoBand from "../components/ProjectInfoBand";
 
 export default function WaitRose() {
   const { language } = useLanguage();
@@ -86,6 +87,8 @@ export default function WaitRose() {
         <span className="tracking-[0.3em]">WAITROSE</span>
         <span className="text-sm text-neutral-400">{t.category}</span>
       </nav>
+      
+      <ProjectInfoBand projectId="waitrose" />
 
       <header className="mx-auto max-w-7xl px-6 pb-20 pt-16">
         <p className="mb-6 text-xs uppercase tracking-[0.3em] text-neutral-400">

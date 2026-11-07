@@ -53,7 +53,7 @@ const projects = [
   {
     id: "fournils",
     slug: "/projects/fournils",
-    image: `${import.meta.env.BASE_URL}images/projects/fournils/`,
+    image: `${import.meta.env.BASE_URL}images/projects/fournils/fournils-cover.png`,
     categories: ["web-design"],
     type: "university",
     en: { title: "France Fournils", category: "Web" },
@@ -74,7 +74,7 @@ const projects = [
   {
     id: "latoise",
     slug: "/projects/latoise",
-    image: `${import.meta.env.BASE_URL}images/projects/toise/`,
+    image: `${import.meta.env.BASE_URL}images/projects/Kailis/Toise-Cover.png`,
     categories: ["illustration"],
     type: "professional",
     en: { title: "Kaïlis - La Toise", category: "Illustration · Photoshop" },
