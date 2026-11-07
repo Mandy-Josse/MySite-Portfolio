@@ -74,7 +74,7 @@ const projects = [
   {
     id: "latoise",
     slug: "/projects/latoise",
-    image: `${import.meta.env.BASE_URL}images/projects/Kailis/Toise-Cover.png`,
+    image: `${import.meta.env.BASE_URL}images/projects/Kailis/Toise/Toise-Cover.png`,
     categories: ["illustration"],
     type: "professional",
     en: { title: "Kaïlis - La Toise", category: "Illustration · Photoshop" },
