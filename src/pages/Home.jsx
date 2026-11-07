@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#EAF8F6] text-[#174C49]">
       <Header />
-      <Hero />
+      {/* <Hero /> */}
       <ProjectsCarousel />
       <ReverieIntro />
       <Skills />

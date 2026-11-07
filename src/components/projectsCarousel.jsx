@@ -84,7 +84,7 @@ const projects = [
 
 const categories = [
   ["all", "All", "Tout"],
-  ["web-design", "Web Design", "Web Design"],
+  ["web-design", "Web Design", "Web Design", "Web"],
   ["graphic-design", "Graphic Design", "Design graphique"],
   ["illustration", "Illustration", "Illustration"],
   ["3d", "3D", "3D"],
@@ -292,10 +292,6 @@ export default function Projects() {
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
           {t.projects.title}
         </h2>
-
-        <span className="hidden text-sm text-neutral-600 md:block">
-          2024 — 2026
-        </span>
       </div>
 
       {/* Filters */}

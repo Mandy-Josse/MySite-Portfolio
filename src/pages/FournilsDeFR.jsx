@@ -118,11 +118,13 @@ export default function FournilsDeFR() {
     },
   };
 
-  const figmaUrl = "https://www.figma.com/design/M6u6Fs5GYa4DNuOTq90L1r/SAE3.01-Mandy-Josse-Les-fournils-de-France?node-id=14-5";
+  const figmaUrl =
+    "https://www.figma.com/design/M6u6Fs5GYa4DNuOTq90L1r/SAE3.01-Mandy-Josse-Les-fournils-de-France?node-id=14-5";
 
   const githubUrl = "https://mandy-josse.github.io/SAE301-Tailwind/";
 
-  const buttonClass = "rounded-full border border-[#174C49]/30 px-6 py-3 text-sm transition hover:bg-[#174C49] hover:text-white";
+  const buttonClass =
+    "rounded-full border border-[#174C49]/30 px-6 py-3 text-sm transition hover:bg-[#174C49] hover:text-white";
 
   const renderParagraphs = (paragraphs) =>
     paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>);
@@ -172,14 +174,10 @@ export default function FournilsDeFR() {
 
       {/* PROJECT OVERVIEW */}
       <section className="px-6 pb-24 md:px-16">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-50 md:grid-cols-2">
           {/* TEXT - LEFT */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col pt-10 gap-6">
             <div>
-              <p className="mb-3 text-sm uppercase tracking-widest text-[#65918A]">
-                {content.overview.category}
-              </p>
-
               <h2 className="text-3xl font-medium">{content.overview.title}</h2>
             </div>
 
@@ -189,7 +187,7 @@ export default function FournilsDeFR() {
           </div>
 
           {/* IMAGE - RIGHT */}
-          <div className="flex justify-center overflow-hidden rounded-3xl bg-[#D8EAE5] md:p-3">
+          <div className="flex justify-center items-center w-fit overflow-hidden rounded-3xl bg-white md:p-3">
             <img
               src={`${base}fournils-cover.png`}
               alt="Les Fournils de France click and collect website"
@@ -255,7 +253,7 @@ export default function FournilsDeFR() {
             <div>
               <div className="overflow-hidden rounded-2xl bg-[#D8EAE5] p-4">
                 <img
-                  src={`${base}wireframes.png`}
+                  src={`${base}Figma-Wireframe.png`}
                   alt="Click and collect wireframes"
                   className="w-full rounded-xl"
                 />
@@ -269,7 +267,7 @@ export default function FournilsDeFR() {
             <div>
               <div className="overflow-hidden rounded-2xl bg-[#D8EAE5] p-4">
                 <img
-                  src={`${base}mockups.png`}
+                  src={`${base}Figma-Proto.png`}
                   alt="Final Figma website mockups"
                   className="w-full rounded-xl"
                 />
@@ -299,17 +297,14 @@ export default function FournilsDeFR() {
               {renderParagraphs(content.development.paragraphs)}
             </div>
 
-            <div className="overflow-hidden rounded-2xl bg-white p-4">
-              <img
-                src={`${base}development.png`}
-                alt={
-                  isFr
-                    ? "Aperçu de l'intégration du site"
-                    : "Website implementation preview"
-                }
-                className="w-full rounded-xl"
-              />
-            </div>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-white w-fit h-fit border border-[#EAF8F6]/40 px-6 py-3 text-sm transition hover:bg-teal-800 hover:text-white"
+            >
+              {content.footer.github}
+            </a>
           </div>
         </div>
       </section>

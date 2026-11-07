@@ -82,14 +82,7 @@ export default function WaitRose() {
     <main className="min-h-screen bg-[#EAF8F6] text-[#174C49]">
       <Header />
 
-      {/* Project header */}
-      <nav className="flex items-center justify-between p-8">
-        <span className="tracking-[0.3em]">WAITROSE</span>
-        <span className="text-sm text-neutral-400">{t.category}</span>
-      </nav>
       
-      <ProjectInfoBand projectId="waitrose" />
-
       <header className="mx-auto max-w-7xl px-6 pb-20 pt-16">
         <p className="mb-6 text-xs uppercase tracking-[0.3em] text-neutral-400">
           {t.category}
@@ -120,6 +113,7 @@ export default function WaitRose() {
           ))}
         </div>
       </header>
+      <ProjectInfoBand projectId="waitrose" />
 
       {/* Video */}
       <section className="mx-auto max-w-7xl px-6 pb-28">
