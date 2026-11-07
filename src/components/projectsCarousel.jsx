@@ -38,6 +38,17 @@ const projects = [
     type: "university",
     en: { title: "Waitrose", category: "Audiovisual" },
     fr: { title: "Waitrose", category: "Audiovisuel" },
+    info: {
+      groupSize: {
+        fr: "Groupe de 3",
+        en: "Team of 3",
+      },
+      deliverables: "2",
+      duration: {
+        fr: "1 semaine",
+        en: "1 week",
+      },
+    },
   },
   {
     id: "fournils",
@@ -47,7 +58,19 @@ const projects = [
     type: "university",
     en: { title: "France Fournils", category: "Web" },
     fr: { title: "Les Fournils de France", category: "Web" },
+    info: {
+      groupSize: {
+        fr: "Individuel",
+        en: "Individual",
+      },
+      deliverables: "2",
+      duration: {
+        fr: "2 semaines",
+        en: "2 weeks",
+      },
+    },
   },
+
   {
     id: "latoise",
     slug: "/projects/latoise",
