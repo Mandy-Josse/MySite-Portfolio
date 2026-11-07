@@ -1,4 +1,3 @@
-
 const projectsInfo = {
   waitrose: {
     groupSize: {
@@ -31,6 +30,17 @@ const projectsInfo = {
     duration: {
       fr: "6 semaines",
       en: "6 weeks",
+    },
+  },
+  card: {
+    groupSize: {
+      fr: "Individuel",
+      en: "Individual",
+    },
+    deliverables: "2",
+    duration: {
+      fr: "1 semaine",
+      en: "1 week",
     },
   },
 };
