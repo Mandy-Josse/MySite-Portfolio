@@ -56,15 +56,6 @@ export default function About() {
               <br />
               <span className="text-teal-500">{t.titleLine3}</span>
             </h2>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                className="inline-flex items-center rounded-full border border-neutral-700 px-6 py-3 text-sm transition hover:border-white hover:text-white"
-              >
-                {language === "fr" ? "Contact" : "Contact"}
-              </a>
-            </div>
           </div>
 
           {/* Description and skills */}
@@ -76,32 +67,6 @@ export default function About() {
             <p className="mt-5 text-base leading-relaxed">
               {t.description2}
             </p>
-
-            <div className="mt-12 grid grid-cols-2 gap-8 border-t border-neutral-800 pt-8 text-[#174C49]">
-              <div>
-                <p className="mb-5 text-xs uppercase tracking-[0.2em]">
-                  design
-                </p>
-
-                <ul className="space-y-3 text-sm">
-                  <li>Illustrator</li>
-                  <li>photoshop</li>
-                  <li>figma</li>
-                </ul>
-              </div>
-
-              <div>
-                <p className="mb-5 text-xs uppercase tracking-[0.2em]">
-                  web
-                </p>
-
-                <ul className="space-y-3 text-sm">
-                  <li>htmlCss</li>
-                  <li>javascript</li>
-                  <li>wordpress</li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </div>
