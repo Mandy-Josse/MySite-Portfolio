@@ -39,15 +39,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="border-t border-neutral-900 px-8 py-28 md:px-12 md:py-36"
+      className="px-8 py-28 md:px-12 md:py-36"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:gap-20">
           {/* Introduction */}
           <div className="flex flex-col items-start">
-            <p className="mb-6 text-xs uppercase tracking-[0.3em]">
-              {t.eyebrow}
-            </p>
 
             <h2 className="text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl">
               {t.title}
