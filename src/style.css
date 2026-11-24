@@ -2,11 +2,16 @@
 
 
 
+@theme {
 
-@theme 
+  --font-body: "Inter", sans-serif;
 
+  --color-white: #FFFFFF;
+  --color-light-teal: #F9E09B;
+  --color-teal: #B94D4D;
+  --color-dark-teal: #F9E09B;
 
-
-
-
-.Light
+  --color-desat-blue: #A2C1BB;
+  --color-blue: #64C3CC;
+  --color-dark-blue: #28565A;
+}

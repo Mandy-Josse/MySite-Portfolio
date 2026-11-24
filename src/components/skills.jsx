@@ -73,7 +73,7 @@ export default function Skills() {
         </p>
 
         <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="max-w-2xl text-5xl font-bold leading-tight tracking-tight text-[#174C49] md:text-7xl">
+          <h2 className="max-w-2xl text-5xl font-bold leading-tight tracking-tight text-teal-900 md:text-7xl">
             {isFr ? "Mes outils," : "My creative"}
             <br />
             <span className="text-teal-500">
@@ -92,7 +92,7 @@ export default function Skills() {
           {skillGroups.map((group) => (
             <article
               key={group.number}
-              className="group rounded-2xl border border-[#D7EBE8] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg hover:shadow-teal-900/5"
+              className="group rounded-2xl border border-teal-500 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg hover:shadow-teal-900/5"
             >
               <h3 className="mb-5 text-xl font-semibold text-teal-800">
                 {group.title[language] || group.title.en}
@@ -102,7 +102,7 @@ export default function Skills() {
                 {group.description[language].map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full bg-[#EAF8F6] px-3 py-2 text-xs font-medium text-[#527A76]"
+                    className="rounded-full bg-teal-100 px-3 py-2 text-xs font-medium text-teal-800"
                   >
                     {skill}
                   </span>

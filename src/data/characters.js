@@ -25,4 +25,10 @@ export const characters = [
     number: "37",
     model: `${base}models/ReverieCharacters/SSting.glb`,
   },
+  {
+    id: "ophelia",
+    name: "Ophelia",
+    number: "N/A",
+    model: `${base}models/ReverieCharacters/Ophelia.glb`,
+  },
 ];

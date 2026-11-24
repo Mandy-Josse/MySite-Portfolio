@@ -1,4 +1,6 @@
 const projectsInfo = {
+
+  
   waitrose: {
     groupSize: {
       fr: "Groupe de 3",
@@ -10,6 +12,8 @@ const projectsInfo = {
       en: "1 week",
     },
   },
+
+
   fournils: {
     groupSize: {
       fr: "Individuel",
@@ -21,6 +25,8 @@ const projectsInfo = {
       en: "2 weeks",
     },
   },
+
+
   latoise: {
     groupSize: {
       fr: "2",
@@ -32,6 +38,16 @@ const projectsInfo = {
       en: "6 weeks",
     },
   },
+
+
+  reverie: {
+    duration: {
+      fr: "3 mois",
+      en: "3 months",
+    },
+  },
+
+
   card: {
     groupSize: {
       fr: "Individuel",

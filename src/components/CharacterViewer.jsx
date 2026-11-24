@@ -1,21 +1,8 @@
 import * as THREE from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
-import {
-  Suspense,
-  useEffect,
-  useMemo,
-  useState,
-  useRef,
-  useCallback,
-} from "react";
+import { Suspense, useEffect, useMemo, useState, useRef, useCallback, } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  Environment,
-  OrbitControls,
-  useAnimations,
-  useGLTF,
-  useProgress,
-} from "@react-three/drei";
+import { Environment, OrbitControls, useAnimations, useGLTF, useProgress, } from "@react-three/drei";
 import { useLanguage } from "../context/LanguageContext";
 
 // CAMERA SETTINGS
@@ -244,11 +231,10 @@ export default function CharacterViewer({ character }) {
         {/* 3D VIEWER */}
         <div
           ref={containerRef}
-          className={`relative overflow-hidden border border-teal-700/40 bg-teal-950 ${
-            isFullscreen
-              ? "h-screen w-screen rounded-none"
-              : "h-150 w-150 rounded-xl"
-          }`}
+          className={`relative overflow-hidden border border-teal-700/40 bg-teal-950 ${isFullscreen
+            ? "h-screen w-screen rounded-none"
+            : "h-150 w-150 rounded-xl"
+            }`}
         >
           {inRange ? (
             <>
@@ -347,43 +333,41 @@ export default function CharacterViewer({ character }) {
             )}
           </button>
 
-          <span className="pointer-events-none absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.2em] text-teal-100/50">
+          <span className="pointer-events-none absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.2em] text-teal-100">
             {t.gallery.explore}
           </span>
 
-          <span className="pointer-events-none absolute right-4 top-4 text-[10px] tracking-widest text-teal-100/40">
+          <span className="pointer-events-none absolute right-4 top-4 text-[10px] tracking-widest text-teal-100">
             {character.number}
           </span>
         </div>
 
         {/* CONTROL PANEL */}
         <section className="flex flex-col gap-5">
-          <h3 className="text-xl font-bold text-teal-50/90">
+          <h3 className="text-xl font-bold text-teal-950">
             {character.name}
           </h3>
 
-          <div className="h-fit w-52 rounded-xl border border-teal-700/40 bg-teal-950/90 p-5 backdrop-blur-sm">
-            <p className="mb-5 text-[10px] uppercase tracking-[0.2em] text-teal-200/50">
+          <div className="h-fit w-52 rounded-xl border border-teal-700 bg-teal-800 p-5 backdrop-blur-sm">
+            <p className="mb-5 text-[10px] uppercase tracking-[0.2em] text-teal-200">
               {t.gallery.controls}
             </p>
 
             {/* SPIN CONTROL */}
             <div className="mb-5">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-teal-100/80">
+                <span className="text-xs text-teal-100">
                   {t.gallery.rotation}
                 </span>
 
                 <button
                   onClick={() => setSpinning((value) => !value)}
-                  className={`relative flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-                    spinning ? "bg-teal-700" : "bg-teal-900"
-                  }`}
+                  className={`relative flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${spinning ? "bg-teal-500" : "bg-teal-950"
+                    }`}
                 >
                   <span
-                    className={`absolute left-1 h-3 w-3 rounded-full bg-teal-100 transition-transform duration-200 ${
-                      spinning ? "translate-x-4" : "translate-x-0"
-                    }`}
+                    className={`absolute left-1 h-3 w-3 rounded-full bg-teal-100 transition-transform duration-200 ${spinning ? "translate-x-4" : "translate-x-0"
+                      }`}
                   />
                 </button>
               </div>
@@ -394,13 +378,13 @@ export default function CharacterViewer({ character }) {
               <>
                 <div className="mb-4">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-xs text-teal-100/80">
+                    <span className="text-xs text-teal-100">
                       Animation
                     </span>
 
                     <button
                       onClick={() => setAnimationPlaying((value) => !value)}
-                      className="text-[10px] uppercase tracking-widest text-teal-300/60 transition-colors hover:text-teal-100"
+                      className="text-[10px] uppercase tracking-widest text-teal-300 transition-colors hover:text-teal-100"
                     >
                       {animationPlaying
                         ? t.gallery.stopAnimation
@@ -414,7 +398,7 @@ export default function CharacterViewer({ character }) {
                       setSelectedAnimation(event.target.value);
                       setAnimationPlaying(true);
                     }}
-                    className="w-full rounded-md border border-teal-700/50 bg-teal-950 px-3 py-2 text-xs text-teal-100/80 outline-none transition-colors focus:border-teal-400"
+                    className="w-full rounded-md border border-teal-700 bg-teal-950 px-3 py-2 text-xs text-teal-100 outline-none transition-colors focus:border-teal-400"
                   >
                     {animations.map((animation) => (
                       <option
@@ -430,7 +414,7 @@ export default function CharacterViewer({ character }) {
 
                 <button
                   onClick={() => setAnimationPlaying((value) => !value)}
-                  className="w-full rounded-md border border-teal-700/50 bg-teal-900/40 px-3 py-2 text-[10px] uppercase tracking-[0.15em] text-teal-100/70 transition-all hover:border-teal-400/70 hover:bg-teal-800/70 hover:text-teal-50"
+                  className="w-full rounded-md border border-teal-700 bg-teal-900 px-3 py-2 text-[10px] uppercase tracking-[0.15em] text-teal-100 transition-all hover:border-teal-400 hover:bg-teal-800 hover:text-teal-50"
                 >
                   {animationPlaying ? "Stop Animation" : "Play Animation"}
                 </button>
@@ -439,7 +423,7 @@ export default function CharacterViewer({ character }) {
 
             {/* NO ANIMATIONS */}
             {animations.length === 0 && (
-              <p className="text-[10px] leading-relaxed text-teal-200/40">
+              <p className="text-[10px] leading-relaxed text-teal-200">
                 {t.gallery.noAnimations}
               </p>
             )}

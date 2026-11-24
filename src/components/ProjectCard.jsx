@@ -20,7 +20,6 @@ export default function ProjectCard({
       className={`
         relative flex h-full w-full flex-col
         rounded-2xl overflow-hidden
-        border border-[#D7EBE8]
         bg-white
         transition-all duration-500
         ${active ? "shadow-xl shadow-teal-900/20" : "shadow-sm"}

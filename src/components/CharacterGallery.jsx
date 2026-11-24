@@ -64,13 +64,13 @@ function CharacterThumbnail({ character, selected, onClick }) {
         rounded-xl border transition-all duration-300
         ${
           selected
-            ? "border-white/60 bg-white/10"
-            : "border-white/10 bg-neutral-900/60 hover:border-white/30"
+            ? "border-white bg-teal-200"
+            : "border-white bg-teal-800 hover:border-white"
         }
       `}
     >
       {/* MINI 3D VIEWPORT */}
-      <div className="relative h-32 w-full bg-neutral-800/60">
+      <div className="relative h-32 w-full bg-teal-950">
         <Canvas
           camera={{
             position: [0, 0.45, 4],
@@ -98,12 +98,12 @@ function CharacterThumbnail({ character, selected, onClick }) {
           </Suspense>
         </Canvas>
 
-        <span className="pointer-events-none absolute left-2 top-2 text-[9px] tracking-widest text-white/30">
+        <span className="pointer-events-none absolute left-2 top-2 text-[9px] tracking-widest text-white">
           {character.number}
         </span>
 
         {selected && (
-          <div className="pointer-events-none absolute inset-0 border border-white/20" />
+          <div className="pointer-events-none absolute inset-0 " />
         )}
       </div>
 
@@ -112,8 +112,8 @@ function CharacterThumbnail({ character, selected, onClick }) {
         <span
           className={`text-[10px] uppercase tracking-widest transition-colors ${
             selected
-              ? "text-white"
-              : "text-white/40 group-hover:text-white/80"
+              ? "text-black font-bold"
+              : "text-white group-hover:text-white"
           }`}
         >
           {character.name}
@@ -142,17 +142,17 @@ export default function CharacterGallery({
       {/* HEADER */}
       <div className="mb-10 flex items-end justify-between">
         <div>
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-neutral-500">
+          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-teal-500">
             {eyebrow}
           </p>
 
           <h2 className="text-3xl tracking-tight md:text-4xl">
             {title}
-            <span className="text-neutral-600">.</span>
+            <span className="text-teal-600">.</span>
           </h2>
         </div>
 
-        <span className="text-xs tracking-widest text-neutral-500">
+        <span className="text-xs tracking-widest text-teal-500">
           {String(models.length).padStart(2, "0")} {t.gallery.objects}
         </span>
       </div>
@@ -168,17 +168,17 @@ export default function CharacterGallery({
       {/* THUMBNAIL GALLERY */}
       <div>
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-500">
+          <p className="font-bold uppercase tracking-[0.25em] text-teal-600">
             {t.gallery.objects}
           </p>
 
-          <span className="text-[10px] tabular-nums tracking-widest text-neutral-600">
+          <span className="font-bold tabular-nums tracking-widest text-teal-600">
             {String(selectedIndex + 1).padStart(2, "0")} /{" "}
             {String(models.length).padStart(2, "0")}
           </span>
         </div>
 
-        <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+        <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent">
           {models.map((character, index) => (
             <CharacterThumbnail
               key={character.id}
